@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>text to speech</title>
+    <style>
+          *{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+            font-family: "Dancing Script", cursive;
+         }
+         .container{
+             
+         }  
+        .rows{
+             display:flex;
+             flex-direction:column;
+             justify-content:center;
+             align-items:center;
+             height:100vh;
+             width:80%;
+             max-width:500px;
+             margin:0 auto;
+         
+        .text{
+            width:100%;
+            height:170px;
+            outline:none;    
+            border:none;
+            font-family: "sens-serif", Poppins;
+            border:1.5px solid black;
+            padding:10px 0 0 10px;
+            background-color:transparent;
+        }
+       .text::placeholder{
+           
+           font-size:22px;
+           font-weight:bold;
+           font-family: "Dancing Script", cursive;
+       }
+       button{
+           width:100%;
+           padding:7px;
+           font-size:35px;  
+           border:none;
+           background-color:#007Baa;
+           margin-top:5px;
+           transition:0.3s ease;
+           color:#fff;
+           
+      }
+        button:hover{
+            background-color:#007Bff;
+            
+        }
+        button:active{
+            font-family: "sens-serif", Poppins;
+        }
+        h2 > span{
+            color:red;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="rows">
+            <h2>Text to <span>Voice</span> Converter</h2>
+        <textarea class="text" placeholder="write text"></textarea>
+            <button>Play</button>
+        </div>
+    </div>
+    <!-- its work but difference browser-->
+    <script>
+        const btn = document.querySelector("button");
+
+try{
+    let speech = new SpeechSynthesisUtterance();
+btn.addEventListener("click", () => {
+  speech.text = document.querySelector(".text").value
+  window.speechSynthesis.speak(speech);
+});
+//ye code is Browser me nahi chalega
+}catch(err){
+    alert(`File is Not Saport this Browser => ${err}`)
+    
+}
+
+    </script>
+</body>
+</html>
+
